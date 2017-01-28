@@ -1,0 +1,8 @@
+name: McHead Chat
+version: 0.0.1
+description: "Cross-Server chat"
+author: Bodyash
+website: https://mchead.ru
+
+main: ru.mchead.crosschat.bukkit.BukkitMain
+database: false
