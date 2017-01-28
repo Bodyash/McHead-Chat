@@ -16,6 +16,7 @@ public class BukkitMain extends JavaPlugin {
 		config = new ConfigUtil(this.getDataFolder());
 		sw = new SocketWorker(config);
 		Bukkit.getLogger().log(Level.INFO, config.getLogo() + "Trying to create new connection");
+		this.getServer().getPluginManager().registerEvents(sw, this);
 		
 		
 	}
