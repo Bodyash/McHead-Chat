@@ -45,7 +45,7 @@ public class SocketWorker implements Listener{
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)
-	private void onPlayerJoin(AsyncPlayerChatEvent e) {
+	private void onChatEvent(AsyncPlayerChatEvent e) {
 		if (e.getMessage().startsWith("!")){
 			sendToServer(e.getMessage().substring(1));
 		}

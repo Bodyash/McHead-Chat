@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 
 public class ServerListenerThread implements Runnable {
 	
@@ -14,18 +13,13 @@ public class ServerListenerThread implements Runnable {
 	public ServerListenerThread(InputStream is) {
 		this.is = is;
 	}
-	//Все что ниже - читаем стрим, печатаем в консоль.
-	//Думаю обьяснять почему этот код в отдельном потоке - не нужно
+	//Все что ниже - читаем стрим, печатаем в чат.
 	@Override
 	public void run() {
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(this.is))){
 			String str = null;
 			while ((str = br.readLine()) != null) {
-				for (Player player : Bukkit.getOnlinePlayers()) {
-					if(player.isOnline()){
-						player.sendMessage(str);
-					}
-				}
+				Bukkit.broadcastMessage(str);
 			}
 		} catch (Exception e) {
 			System.out.println("Disconnected");
